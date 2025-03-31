@@ -10,3 +10,5 @@ https://github.com/ZXD44/TESTING/blob/main/Screenshot_20250216_221437.png
 <img src="ชื่อไฟล์รูปภาพ" alt="ชื่อรูปภาพ">
 ![โลโก้](logo.png)
 ![ชื่อรูปภาพ](ชื่อไฟล์รูปภาพ)
+![โลโก้](https://github.com/username/repository/blob/main/logo.png)
+![ชื่อรูปภาพ]([ลิงก์รูปภาพ](https://github.com/ZXD44/TESTING/blob/main/Screenshot_20250216_221437.png))
