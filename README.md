@@ -1,5 +1,7 @@
 # TESTING
-123123123
+<a href="minecraft://?addExternalServer=เซิฟเวอร์_ของคุณ" class="btn">
+  เข้าเซิฟเวอร์ Minecraft Bedrock
+</a>
 
 
 https://github.com/ZXD44/TESTING/blob/main/Screenshot_20250216_221437.png
