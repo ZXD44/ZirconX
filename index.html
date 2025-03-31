@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โปรไฟล์ของฉัน</title>
-    <link rel="icon" href="https://images.squarespace-cdn.com/conhttps://example.com/favicon.icotent/v1/58c70bf803596e1ab1be3451/1551732801079-I4T3QWZW74QRZGGCCMQB/Screen+Shot+2019-03-04+at+12.14.2[...]
+    <link rel="icon" href="https://example.com/favicon.ico">
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://images.unsplash.com/photo-1491466424936-e304919aada7?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8MTkyMHgxMDgwJTIwd2FsbHBhcGVyfGVufDB8fDB[...]
+            background: url('https://images.unsplash.com/photo-1491466424936-e304919aada7?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8MTkyMHgxMDgwJTIwd2FsbHBhcGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             color: #ffffff;
             text-align: center;
@@ -62,10 +62,10 @@
             height: 24px;
         }
         .github {
-            background-color: #24292e; /* สีพื้นหลังใหม่ */
+            background-color: #24292e;
         }
         .github:hover {
-            background-color: #484f58; /* สีเมื่อโฮเวอร์ใหม่ */
+            background-color: #484f58;
         }
         .donate {
             background-color: #ff5722;
@@ -79,6 +79,56 @@
         .contact:hover {
             background-color: #004d40;
         }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .buttons a {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+            img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .buttons a {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -86,7 +136,7 @@
         <img src="https://yt3.googleusercontent.com/3fvXW4ZKC5MX7SjTlAP4Xqzh4lPWAVVv_Sx6Yo_2iB4KTn0g2ol4CLoZJDk1rw1CqAvDvngqSRI=s160-c-k-c0x00ffffff-no-rj" alt="รูปโปรไฟล์">
         <h1>ZirconX</h1>
         <p>นักพัฒนาเว็บ | เกมเมอร์ | ครีเอเตอร์คอนเทนต์</p>
-        <p>ยินดีต้อนรับสู่โปรไฟล์ของฉัน! ฉันเป็นคนที่หลงใหลในการเขียนโค้ดแ[...]
+        <p>ยินดีต้อนรับสู่โปรไฟล์ของฉัน! ฉันเป็นคนที่หลงใหลในการเขียนโค้ดและการสร้างสรรค์สิ่งใหม่ ๆ</p>
         <div class="buttons">
             <a href="https://github.com/ZXD44" class="github">
                 <img src="https://cdn.prod.website-files.com/5f10ed4b2ae6bc09c03f5d7a/64959d5f65a257fb51a4259c_github.png" alt="GitHub">
