@@ -3,6 +3,10 @@
   เข้าเซิฟเวอร์ Minecraft Bedrock
 </a>
 
+[เข้าเซิฟเวอร์ Minecraft Bedrock](minecraft://?addExternalServer=เซิฟเวอร์_ของคุณ){: .btn}
+
+-
+
 
 https://github.com/ZXD44/TESTING/blob/main/Screenshot_20250216_221437.png
 
