@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โปรไฟล์แนะนำตัว</title>
-    <link rel="icon" href="https://iili.io/3AvPQi7.png">
+    <!-- ใส่ไอคอน -->
+    <link rel="icon" href="https://iili.io/3AvPQi7.png"> <!-- เปลี่ยน URL นี้เป็น URL ของ favicon ของคุณ -->
     <style>
         body {
+            /* กำหนดฟอนต์ ตัดขอบ และพื้นหลัง */
             font-family: 'Sarabun', sans-serif;
             margin: 0;
             padding: 0;
@@ -16,6 +18,7 @@
             text-align: center;
         }
         .container {
+            /* กำหนดขนาดและรูปแบบของคอนเทนเนอร์ */
             max-width: 600px;
             margin: 50px auto;
             padding: 20px;
@@ -24,6 +27,7 @@
             box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
         }
         img {
+            /* กำหนดขนาดและรูปแบบของรูปภาพโปรไฟล์ */
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -31,21 +35,25 @@
             border: 4px solid #ffffff;
         }
         h1 {
+            /* กำหนดขนาดและรูปแบบของหัวข้อ */
             margin: 10px 0;
             font-size: 28px;
         }
         p {
+            /* กำหนดขนาดและรูปแบบของข้อความ */
             font-size: 18px;
             margin-bottom: 20px;
             color: #b3b3b3;
         }
         .buttons {
+            /* จัดการรูปแบบของปุ่ม */
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
         }
         .buttons a {
+            /* กำหนดขนาดและรูปแบบของลิงก์ปุ่ม */
             display: flex;
             align-items: center;
             text-decoration: none;
@@ -56,159 +64,160 @@
             color: #ffffff;
             transition: 0.3s;
         }
+        .buttons a img {
+            /* กำหนดขนาดและรูปแบบของรูปภาพในปุ่ม */
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
         .github {
+            /* รูปแบบของปุ่ม GitHub */
             background-color: #24292e;
         }
         .github:hover {
+            /* รูปแบบของปุ่ม GitHub เมื่อชี้เมาส์ */
             background-color: #484f58;
         }
         .donate {
+            /* รูปแบบของปุ่ม Donate */
             background-color: #ff5722;
         }
         .donate:hover {
+            /* รูปแบบของปุ่ม Donate เมื่อชี้เมาส์ */
             background-color: #e64a19;
         }
         .contact {
+            /* รูปแบบของปุ่ม Contact */
             background-color: #00796b;
         }
         .contact:hover {
+            /* รูปแบบของปุ่ม Contact เมื่อชี้เมาส์ */
             background-color: #004d40;
         }
-        .chat-box-container {
-            margin-top: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            color: #ffffff;
-            text-align: left;
+        
+        /* รูปแบบสำหรับหน้าจอที่มีขนาดเล็กกว่า 768px */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .buttons a {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+            img {
+                width: 120px;
+                height: 120px;
+            }
         }
-        .chat-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-            color: #4caf50;
-        }
-        .chat-box .messages {
-            max-height: 300px;
-            overflow-y: auto;
-            margin-bottom: 15px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .chat-box .messages .message {
-            margin-bottom: 10px;
-        }
-        .chat-box .messages .user {
-            text-align: right;
-            color: #4caf50;
-        }
-        .chat-box .messages .bot {
-            text-align: left;
-            color: #03a9f4;
-        }
-        .input-container {
-            display: flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 5px 10px;
-        }
-        .input-container input {
-            flex-grow: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            outline: none;
-        }
-        .input-container button {
-            background-color: #00796b;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            margin-left: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-        .input-container button:hover {
-            background-color: #004d40;
-        }
-        .input-container button svg {
-            width: 24px;
-            height: 24px;
-            fill: #ffffff;
+        /* รูปแบบสำหรับหน้าจอที่มีขนาดเล็กกว่า 480px */
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .buttons a {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            img {
+                width: 100px;
+                height: 100px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- รูปโปรไฟล์ -->
         <img src="https://yt3.googleusercontent.com/3fvXW4ZKC5MX7SjTlAP4Xqzh4lPWAVVv_Sx6Yo_2iB4KTn0g2ol4CLoZJDk1rw1CqAvDvngqSRI=s160-c-k-c0x00ffffff-no-rj" alt="รูปโปรไฟล์">
         <h1>ZirconX</h1>
         <p>นักพัฒนาเว็บ | เกมเมอร์ | ครีเอเตอร์คอนเทนต์</p>
-        <p>ยินดีต้อนรับสู่โปรไฟล์ของฉัน! ฉันเป็นคนที่หลงใหลในการเขียนโค้ดและการสร้างสรรค์สิ่งใหม่ๆ...</p>
+        <p>ยินดีต้อนรับสู่โปรไฟล์ของฉัน! ฉันเป็นคนที่หลงใหลในการเขียนโค้ดแล�[...]
+        
+        <!-- ส่วนนี้เพิ่มสำหรับรับ API Key -->
+        <h2>ตั้งค่า API Key</h2>
+        <form id="apiKeyForm">
+            <input
+                type="text"
+                id="apiKeyInput"
+                placeholder="AIzaSyAawpAEke80DcXP0x2OEIQScp1TMQ2P2wM"
+                style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;"
+            />
+            <button
+                type="submit"
+                style="padding: 10px 20px; background-color: #00796b; color: white; border: none; border-radius: 5px; cursor: pointer;"
+            >
+                บันทึก
+            </button>
+        </form>
+        <p id="apiKeyStatus" style="color: #b3b3b3; margin-top: 10px;"></p>
+
         <div class="buttons">
+            <!-- ปุ่ม GitHub -->
             <a href="https://github.com/ZXD44" class="github">
+                <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub">
                 ไกท์ฮับ
             </a>
+            <!-- ปุ่ม Donate -->
             <a href="https://beacons.ai/zirconx" class="donate">
+                <img src="https://cdn-icons-png.freepik.com/512/13013/13013821.png" alt="Donate">
                 เว็บเติมเงิน
             </a>
+            <!-- ปุ่ม Contact -->
             <a href="https://t.me/ZirconXD" class="contact">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1200px-Telegram_2019_Logo.svg.png" alt="Contact">
                 ติดต่อ
             </a>
-        </div>
-
-        <!-- กล่องข้อความ AI -->
-        <div class="chat-box-container">
-            <div class="chat-title">พูดคุยกับ AI - Gemini</div>
-            <div class="chat-box">
-                <div class="messages" id="messages"></div>
-                <div class="input-container">
-                    <input type="text" id="userInput" placeholder="พิมพ์ข้อความ...">
-                    <button onclick="sendMessage()">
-                        <!-- ไอคอนลูกศร -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 
     <script>
-        const messagesDiv = document.getElementById('messages');
+        // ฟังก์ชันสำหรับจัดการ API Key
+        document.getElementById("apiKeyForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // ป้องกันการรีเฟรชหน้าเว็บ
 
-        function sendMessage() {
-            const input = document.getElementById('userInput');
-            const userMessage = input.value.trim();
-            if (!userMessage) return;
+            // ดึงค่าจาก input
+            const apiKey = document.getElementById("apiKeyInput").value;
 
-            displayMessage(userMessage, 'user');
+            if (apiKey) {
+                // จัดเก็บ API Key ลงใน Local Storage
+                localStorage.setItem("geminiApiKey", apiKey);
 
-            // จำลองการตอบกลับ
-            setTimeout(() => {
-                const botMessage = `AI ตอบ: "${userMessage}"`;
-                displayMessage(botMessage, 'bot');
-            }, 1000);
+                // อัพเดตสถานะ
+                document.getElementById("apiKeyStatus").textContent = "API Key ถูกบันทึกเรียบร้อยแล้ว!";
+            } else {
+                document.getElementById("apiKeyStatus").textContent = "กรุณาใส่ API Key ก่อนบันทึก!";
+            }
+        });
 
-            input.value = ''; // ล้างข้อความ
-        }
-
-        function displayMessage(message, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}`;
-            messageDiv.textContent = message;
-            messagesDiv.appendChild(messageDiv);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight; // เลื่อนข้อความลงล่างสุด
-        }
+        // โหลด API Key ที่จัดเก็บไว้ (ถ้ามี)
+        window.addEventListener("load", function () {
+            const storedApiKey = localStorage.getItem("geminiApiKey");
+            if (storedApiKey) {
+                document.getElementById("apiKeyStatus").textContent = "API Key ที่ใช้งาน: " + storedApiKey;
+            }
+        });
     </script>
 </body>
 </html>
