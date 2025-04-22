@@ -1,4 +1,4 @@
-<img src="https://discord.com/channels/@me/1029413009401065473/1364063734485618688" alt="ชื่อรูปภาพ">
+<img src="https://cdn.discordapp.com/attachments/1029413009401065473/1364063734221504544/photo_2025-04-22_09-21-16.jpg?ex=68084ed9&is=6806fd59&hm=0d0c702808166e922a52a6c54f6114a9d1d6cd8a945dffe359129deb337e2367&" alt="ชื่อรูปภาพ">
 
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE /v BypassNRO /t REG_DWORD /d 1 /f
 
