@@ -162,59 +162,61 @@
         </div>
     </div>
 
-    <script>
-        const API_KEY = "AIzaSyBm-ab9oMT1tXlyCP0Fn-GlIPCrPa2uAtE"; // ใส่ API Key จาก AI Studio ของคุณที่นี่
-        const API_URL = "https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText";
+<script>
+    const API_KEY = "AIzaSyBm-ab9oMT1tXlyCP0Fn-GlIPCrPa2uAtE"; // API Key จาก AI Studio (Makersuite)
+    const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
 
-        const chatBox = document.getElementById("chatBox");
-        const chatInput = document.getElementById("chatInput");
-        const sendButton = document.getElementById("sendButton");
+    const chatBox = document.getElementById("chatBox");
+    const chatInput = document.getElementById("chatInput");
+    const sendButton = document.getElementById("sendButton");
 
-        function addMessage(text, sender) {
-            const message = document.createElement("p");
-            message.className = sender;
-            message.textContent = text;
-            chatBox.appendChild(message);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
+    function addMessage(text, sender) {
+        const message = document.createElement("p");
+        message.className = sender;
+        message.textContent = text;
+        chatBox.appendChild(message);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
 
-        async function sendMessage() {
-            const userInput = chatInput.value.trim();
-            if (!userInput) return;
+    async function sendMessage() {
+        const userInput = chatInput.value.trim();
+        if (!userInput) return;
 
-            addMessage(userInput, "user");
-            chatInput.value = "";
+        addMessage(userInput, "user");
+        chatInput.value = "";
 
-            try {
-                const response = await fetch(`${API_URL}?key=${API_KEY}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        prompt: {
-                            text: userInput
+        try {
+            const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    contents: [
+                        {
+                            parts: [{ text: userInput }]
                         }
-                    })
-                });
+                    ]
+                })
+            });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    const aiReply = data.candidates?.[0]?.output || "ไม่พบคำตอบ";
-                    addMessage(aiReply, "ai");
-                } else {
-                    const errorText = await response.text();
-                    addMessage(`เกิดข้อผิดพลาด: ${errorText}`, "ai");
-                }
-            } catch (error) {
-                addMessage("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้", "ai");
+            if (response.ok) {
+                const data = await response.json();
+                const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "ไม่พบคำตอบ";
+                addMessage(aiReply, "ai");
+            } else {
+                const errorText = await response.text();
+                addMessage(`เกิดข้อผิดพลาด: ${errorText}`, "ai");
             }
+        } catch (error) {
+            addMessage("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้", "ai");
         }
+    }
 
-        sendButton.addEventListener("click", sendMessage);
-        chatInput.addEventListener("keypress", function (e) {
-            if (e.key === "Enter") sendMessage();
-        });
-    </script>
+    sendButton.addEventListener("click", sendMessage);
+    chatInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") sendMessage();
+    });
+</script>
 </body>
 </html>
