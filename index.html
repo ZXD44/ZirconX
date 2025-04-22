@@ -157,19 +157,32 @@
     }
 
     .input-group button {
-        padding: 10px 20px;
-        background-color: #00796b;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #00796b, #004d40); /* Gradient สี */
         color: white;
         border: none;
-        border-radius: 50%;
+        border-radius: 50%; /* ทำให้เป็นวงกลม */
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .input-group button:hover {
+        transform: scale(1.1); /* ขยายขนาดเมื่อ hover */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-group button:active {
+        transform: scale(0.95); /* ย่อขนาดเมื่อกด */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     .input-group button::after {
-        content: '➤'; /* ใช้ลูกศรแทนคำว่า "ส่ง" */
+        content: '➤'; /* ใช้ลูกศรเป็นไอคอน */
         font-size: 16px;
         color: white;
     }
