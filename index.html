@@ -133,7 +133,7 @@
         <img src="https://yt3.googleusercontent.com/3fvXW4ZKC5MX7SjTlAP4Xqzh4lPWAVVv_Sx6Yo_2iB4KTn0g2ol4CLoZJDk1rw1CqAvDvngqSRI=s160-c-k-c0x00ffffff-no-rj" alt="รูปโปรไฟล์">
         <h1>ZirconX</h1>
         <p>นักพัฒนาเว็บ | เกมเมอร์ | ครีเอเตอร์คอนเทนต์</p>
-        <p>ยินดีต้อนรับสู่โปรไฟล์ของฉัน! ฉันเป็นคนที่หลงใหลในการเขียนโค้ดและสร้างสิ่งใหม่ ๆ</p>
+        <p>ยินดีต้อนรับสู่โปรไฟล์ของฉัน! ฉันเป็นคนที่หลงใหลในการเขียนโค้ดและสร้างสรรค์เนื้อหา</p>
 
         <!-- ปุ่มลิงก์ -->
         <div class="buttons">
@@ -163,7 +163,7 @@
     </div>
 
     <script>
-        const GEMINI_API_URL = "/api/chat"; // ใช้ endpoint ภายในเซิร์ฟเวอร์ของคุณ
+        const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=GEMINI_API_KEY";
         const chatBox = document.getElementById("chatBox");
         const chatInput = document.getElementById("chatInput");
         const sendButton = document.getElementById("sendButton");
@@ -190,13 +190,15 @@
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        message: userInput
+                        contents: [{
+                            parts: [{ text: userInput }]
+                        }]
                     })
                 });
 
                 if (response.ok) {
                     const data = await response.json();
-                    const aiReply = data.reply || "ไม่พบคำตอบ";
+                    const aiReply = data.contents?.[0]?.parts?.[0]?.text || "ไม่พบคำตอบ";
                     addMessage(aiReply, "ai");
                 } else {
                     addMessage("เกิดข้อผิดพลาดในการเชื่อมต่อกับ AI", "ai");
