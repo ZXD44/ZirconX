@@ -6,206 +6,206 @@
     <title>โปรไฟล์แนะนำตัว</title>
     <link rel="icon" href="https://iili.io/3AvPQi7.png">
 <style>
-    /* คงเดิม */
+/* คงเดิม */
+body {
+    font-family: 'Sarabun', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://i.redd.it/tddy4990hfk61.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(22, 27, 34, 0.85);
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffffff;
+}
+
+h1 {
+    margin: 10px 0;
+    font-size: 28px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #b3b3b3;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* ใช้ wrap กรณีพื้นที่แนวนอนไม่พอ */
+}
+
+.buttons a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.buttons a img {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+.github {
+    background-color: #24292e;
+}
+
+.github:hover {
+    background-color: #484f58;
+}
+
+.donate {
+    background-color: #ff5722;
+}
+
+.donate:hover {
+    background-color: #e64a19;
+}
+
+.contact {
+    background-color: #00796b;
+}
+
+.contact:hover {
+    background-color: #004d40;
+}
+
+.chat-container {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.chat-box {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.chat-box p {
+    margin: 5px 0;
+}
+
+.user {
+    text-align: right;
+    color: #00796b;
+}
+
+.ai {
+    text-align: left;
+    color: #24292e;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input-group button {
+    padding: 10px 20px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* เพิ่ม Media Queries สำหรับหน้าจอขนาดเล็ก */
+@media screen and (max-width: 768px) {
     body {
-        font-family: 'Sarabun', sans-serif;
-        margin: 0;
-        padding: 0;
-        background: url('https://i.redd.it/tddy4990hfk61.jpg') no-repeat center center fixed;
         background-size: cover;
-        color: #ffffff;
-        text-align: center;
     }
 
     .container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        background: rgba(22, 27, 34, 0.85);
-        border-radius: 15px;
-        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+        margin: 20px auto;
+        padding: 15px;
+        max-width: 90%; /* ลดความกว้างเมื่ออยู่ในมือถือ */
     }
 
     img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid #ffffff;
+        width: 120px;
+        height: 120px;
     }
 
     h1 {
-        margin: 10px 0;
-        font-size: 28px;
+        font-size: 24px;
     }
 
     p {
-        font-size: 18px;
-        margin-bottom: 20px;
-        color: #b3b3b3;
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 20px;
-        flex-wrap: wrap; /* ใช้ wrap กรณีพื้นที่แนวนอนไม่พอ */
+        font-size: 16px;
     }
 
     .buttons a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        padding: 12px 20px;
-        border-radius: 8px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #ffffff;
-        transition: 0.3s;
+        font-size: 16px;
+        padding: 10px 15px;
     }
 
     .buttons a img {
-        margin-right: 10px;
-        width: 24px;
-        height: 24px;
-    }
-
-    .github {
-        background-color: #24292e;
-    }
-
-    .github:hover {
-        background-color: #484f58;
-    }
-
-    .donate {
-        background-color: #ff5722;
-    }
-
-    .donate:hover {
-        background-color: #e64a19;
-    }
-
-    .contact {
-        background-color: #00796b;
-    }
-
-    .contact:hover {
-        background-color: #004d40;
-    }
-
-    .chat-container {
-        margin-top: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 10px;
-        text-align: left;
+        width: 20px;
+        height: 20px;
     }
 
     .chat-box {
-        height: 300px;
-        overflow-y: auto;
-        padding: 10px;
-        border: 1px solid #ccc;
-        background-color: #ffffff;
-        color: #000000;
-        border-radius: 5px;
-        margin-bottom: 10px;
+        height: 200px; /* ลดความสูงของกล่องแชท */
     }
 
-    .chat-box p {
-        margin: 5px 0;
+    .input-group input,
+    .input-group button {
+        font-size: 14px;
+        padding: 8px;
     }
+}
 
-    .user {
-        text-align: right;
-        color: #00796b;
-    }
-
-    .ai {
-        text-align: left;
-        color: #24292e;
-    }
-
-    .input-group {
-        display: flex;
+@media screen and (max-width: 480px) {
+    .buttons {
+        flex-direction: column; /* ปุ่มเรียงกันในแนวตั้ง */
         gap: 10px;
     }
 
-    .input-group input {
-        flex: 1;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
+    .buttons a {
+        width: 100%; /* ปุ่มขยายเต็มความกว้าง */
+        justify-content: center;
     }
-
-    .input-group button {
-        padding: 10px 20px;
-        background-color: #00796b;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    /* เพิ่ม Media Queries สำหรับหน้าจอขนาดเล็ก */
-    @media screen and (max-width: 768px) {
-        body {
-            background-size: cover;
-        }
-
-        .container {
-            margin: 20px auto;
-            padding: 15px;
-            max-width: 90%; /* ลดความกว้างเมื่ออยู่ในมือถือ */
-        }
-
-        img {
-            width: 120px;
-            height: 120px;
-        }
-
-        h1 {
-            font-size: 24px;
-        }
-
-        p {
-            font-size: 16px;
-        }
-
-        .buttons a {
-            font-size: 16px;
-            padding: 10px 15px;
-        }
-
-        .buttons a img {
-            width: 20px;
-            height: 20px;
-        }
-
-        .chat-box {
-            height: 200px; /* ลดความสูงของกล่องแชท */
-        }
-
-        .input-group input,
-        .input-group button {
-            font-size: 14px;
-            padding: 8px;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .buttons {
-            flex-direction: column; /* ปุ่มเรียงกันในแนวตั้ง */
-            gap: 10px;
-        }
-
-        .buttons a {
-            width: 100%; /* ปุ่มขยายเต็มความกว้าง */
-            justify-content: center;
-        }
-    }
+}
 </style>
 </head>
 <body>
