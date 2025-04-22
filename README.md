@@ -1,4 +1,4 @@
-<img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1BWaL7.img?w=768&h=512&m=6&f=webp" alt="ชื่อรูปภาพ">
+<img src="https://discord.com/channels/@me/1029413009401065473/1364063734485618688" alt="ชื่อรูปภาพ">
 
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE /v BypassNRO /t REG_DWORD /d 1 /f
 
