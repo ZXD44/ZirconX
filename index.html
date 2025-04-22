@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โปรไฟล์แนะนำตัว</title>
-    <!-- ใส่ไอคอน -->
-    <link rel="icon" href="https://iili.io/3AvPQi7.png"> <!-- เปลี่ยน URL นี้เป็น URL ของ favicon ของคุณ -->
+    <link rel="icon" href="https://iili.io/3AvPQi7.png">
     <style>
         body {
-            /* กำหนดฟอนต์ ตัดขอบ และพื้นหลัง */
             font-family: 'Sarabun', sans-serif;
             margin: 0;
             padding: 0;
@@ -18,7 +16,6 @@
             text-align: center;
         }
         .container {
-            /* กำหนดขนาดและรูปแบบของคอนเทนเนอร์ */
             max-width: 600px;
             margin: 50px auto;
             padding: 20px;
@@ -27,7 +24,6 @@
             box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
         }
         img {
-            /* กำหนดขนาดและรูปแบบของรูปภาพโปรไฟล์ */
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -35,25 +31,21 @@
             border: 4px solid #ffffff;
         }
         h1 {
-            /* กำหนดขนาดและรูปแบบของหัวข้อ */
             margin: 10px 0;
             font-size: 28px;
         }
         p {
-            /* กำหนดขนาดและรูปแบบของข้อความ */
             font-size: 18px;
             margin-bottom: 20px;
             color: #b3b3b3;
         }
         .buttons {
-            /* จัดการรูปแบบของปุ่ม */
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
         }
         .buttons a {
-            /* กำหนดขนาดและรูปแบบของลิงก์ปุ่ม */
             display: flex;
             align-items: center;
             text-decoration: none;
@@ -65,158 +57,164 @@
             transition: 0.3s;
         }
         .buttons a img {
-            /* กำหนดขนาดและรูปแบบของรูปภาพในปุ่ม */
             margin-right: 10px;
             width: 24px;
             height: 24px;
         }
         .github {
-            /* รูปแบบของปุ่ม GitHub */
             background-color: #24292e;
         }
         .github:hover {
-            /* รูปแบบของปุ่ม GitHub เมื่อชี้เมาส์ */
             background-color: #484f58;
         }
         .donate {
-            /* รูปแบบของปุ่ม Donate */
             background-color: #ff5722;
         }
         .donate:hover {
-            /* รูปแบบของปุ่ม Donate เมื่อชี้เมาส์ */
             background-color: #e64a19;
         }
         .contact {
-            /* รูปแบบของปุ่ม Contact */
             background-color: #00796b;
         }
         .contact:hover {
-            /* รูปแบบของปุ่ม Contact เมื่อชี้เมาส์ */
             background-color: #004d40;
         }
-        
-        /* รูปแบบสำหรับหน้าจอที่มีขนาดเล็กกว่า 768px */
-        @media (max-width: 768px) {
-            .container {
-                margin: 20px;
-                padding: 15px;
-            }
-            h1 {
-                font-size: 24px;
-            }
-            p {
-                font-size: 16px;
-            }
-            .buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .buttons a {
-                font-size: 16px;
-                padding: 10px 15px;
-            }
-            img {
-                width: 120px;
-                height: 120px;
-            }
+        .chat-container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
         }
-        /* รูปแบบสำหรับหน้าจอที่มีขนาดเล็กกว่า 480px */
-        @media (max-width: 480px) {
-            .container {
-                margin: 10px;
-                padding: 10px;
-            }
-            h1 {
-                font-size: 20px;
-            }
-            p {
-                font-size: 14px;
-            }
-            .buttons {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .buttons a {
-                font-size: 14px;
-                padding: 8px 12px;
-            }
-            img {
-                width: 100px;
-                height: 100px;
-            }
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+            color: #000000;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .chat-box p {
+            margin: 5px 0;
+        }
+        .user {
+            text-align: right;
+            color: #00796b;
+        }
+        .ai {
+            text-align: left;
+            color: #24292e;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .input-group button {
+            padding: 10px 20px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- รูปโปรไฟล์ -->
+        <!-- โปรไฟล์แนะนำตัว -->
         <img src="https://yt3.googleusercontent.com/3fvXW4ZKC5MX7SjTlAP4Xqzh4lPWAVVv_Sx6Yo_2iB4KTn0g2ol4CLoZJDk1rw1CqAvDvngqSRI=s160-c-k-c0x00ffffff-no-rj" alt="รูปโปรไฟล์">
         <h1>ZirconX</h1>
         <p>นักพัฒนาเว็บ | เกมเมอร์ | ครีเอเตอร์คอนเทนต์</p>
-        <p>ยินดีต้อนรับสู่โปรไฟล์ของฉัน! ฉันเป็นคนที่หลงใหลในการเขียนโค้ดแล�[...]
-        
-        <!-- ส่วนนี้เพิ่มสำหรับรับ API Key -->
-        <h2>ตั้งค่า API Key</h2>
-        <form id="apiKeyForm">
-            <input
-                type="text"
-                id="apiKeyInput"
-                placeholder="AIzaSyAawpAEke80DcXP0x2OEIQScp1TMQ2P2wM"
-                style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;"
-            />
-            <button
-                type="submit"
-                style="padding: 10px 20px; background-color: #00796b; color: white; border: none; border-radius: 5px; cursor: pointer;"
-            >
-                บันทึก
-            </button>
-        </form>
-        <p id="apiKeyStatus" style="color: #b3b3b3; margin-top: 10px;"></p>
+        <p>ยินดีต้อนรับสู่โปรไฟล์ของฉัน! ฉันเป็นคนที่หลงใหลในการเขียนโค้ดและสร้างสิ่งใหม่ ๆ</p>
 
+        <!-- ปุ่มลิงก์ -->
         <div class="buttons">
-            <!-- ปุ่ม GitHub -->
             <a href="https://github.com/ZXD44" class="github">
                 <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub">
                 ไกท์ฮับ
             </a>
-            <!-- ปุ่ม Donate -->
             <a href="https://beacons.ai/zirconx" class="donate">
                 <img src="https://cdn-icons-png.freepik.com/512/13013/13013821.png" alt="Donate">
                 เว็บเติมเงิน
             </a>
-            <!-- ปุ่ม Contact -->
             <a href="https://t.me/ZirconXD" class="contact">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1200px-Telegram_2019_Logo.svg.png" alt="Contact">
                 ติดต่อ
             </a>
         </div>
+
+        <!-- กล่องข้อความแชท AI -->
+        <div class="chat-container">
+            <h2>พูดคุยกับ AI</h2>
+            <div id="chatBox" class="chat-box"></div>
+            <div class="input-group">
+                <input type="text" id="chatInput" placeholder="พิมพ์ข้อความที่นี่...">
+                <button id="sendButton">ส่ง</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        // ฟังก์ชันสำหรับจัดการ API Key
-        document.getElementById("apiKeyForm").addEventListener("submit", function (e) {
-            e.preventDefault(); // ป้องกันการรีเฟรชหน้าเว็บ
+        const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent";
+        const GEMINI_API_KEY = "AIzaSyAawpAEke80DcXP0x2OEIQScp1TMQ2P2wM"; // ใส่ API Key ของคุณที่นี่
 
-            // ดึงค่าจาก input
-            const apiKey = document.getElementById("apiKeyInput").value;
+        // ฟังก์ชันสำหรับจัดการการแชท
+        const chatBox = document.getElementById("chatBox");
+        const chatInput = document.getElementById("chatInput");
+        const sendButton = document.getElementById("sendButton");
 
-            if (apiKey) {
-                // จัดเก็บ API Key ลงใน Local Storage
-                localStorage.setItem("geminiApiKey", apiKey);
+        function addMessage(text, sender) {
+            const message = document.createElement("p");
+            message.className = sender;
+            message.textContent = text;
+            chatBox.appendChild(message);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
 
-                // อัพเดตสถานะ
-                document.getElementById("apiKeyStatus").textContent = "API Key ถูกบันทึกเรียบร้อยแล้ว!";
-            } else {
-                document.getElementById("apiKeyStatus").textContent = "กรุณาใส่ API Key ก่อนบันทึก!";
+        async function sendMessage() {
+            const userInput = chatInput.value.trim();
+            if (!userInput) return;
+
+            addMessage(userInput, "user");
+            chatInput.value = "";
+
+            try {
+                const response = await fetch(GEMINI_API_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${GEMINI_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        prompt: {
+                            text: userInput
+                        }
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const aiReply = data.candidates[0].output;
+                    addMessage(aiReply, "ai");
+                } else {
+                    addMessage("เกิดข้อผิดพลาดในการเชื่อมต่อกับ AI", "ai");
+                }
+            } catch (error) {
+                addMessage("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้", "ai");
             }
-        });
+        }
 
-        // โหลด API Key ที่จัดเก็บไว้ (ถ้ามี)
-        window.addEventListener("load", function () {
-            const storedApiKey = localStorage.getItem("geminiApiKey");
-            if (storedApiKey) {
-                document.getElementById("apiKeyStatus").textContent = "API Key ที่ใช้งาน: " + storedApiKey;
-            }
+        sendButton.addEventListener("click", sendMessage);
+        chatInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") sendMessage();
         });
     </script>
 </body>
