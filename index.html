@@ -49,7 +49,7 @@
         justify-content: center;
         gap: 15px;
         margin-top: 20px;
-        flex-wrap: nowrap; /* ป้องกันการเปลี่ยนเป็นแนวตั้ง */
+        flex-wrap: nowrap;
     }
 
     .buttons a {
@@ -62,7 +62,7 @@
         font-weight: bold;
         color: #ffffff;
         transition: 0.3s;
-        flex-shrink: 0; /* ป้องกันการย่อขนาดปุ่ม */
+        flex-shrink: 0;
     }
 
     .buttons a img {
@@ -100,7 +100,11 @@
         background: rgba(255, 255, 255, 0.1);
         padding: 20px;
         border-radius: 10px;
-        text-align: left;
+        text-align: right; /* หัวข้อแชททางขวามือ */
+    }
+
+    .chat-container h2 {
+        margin: 0;
     }
 
     .chat-box {
@@ -109,10 +113,10 @@
         padding: 10px;
         border: 1px solid rgba(255, 255, 255, 0.3);
         background: rgba(255, 255, 255, 0.1); /* Glassmorphism Effect */
-        color: #ffffff;
+        color: #d1d1d1; /* สีข้อความสนทนาเข้มขึ้นเล็กน้อย */
         border-radius: 10px;
         margin-bottom: 10px;
-        backdrop-filter: blur(10px); /* Glass effect */
+        backdrop-filter: blur(10px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
@@ -139,7 +143,15 @@
         flex: 1;
         padding: 10px;
         border-radius: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid rgba(255, 255, 255, 0.3); /* สี border glassmorphism */
+        background: rgba(255, 255, 255, 0.1); /* Glassmorphism Effect */
+        color: #ffffff; /* สีตัวอักษร */
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-group input::placeholder {
+        color: #d1d1d1; /* สีข้อความ placeholder */
     }
 
     .input-group button {
@@ -199,7 +211,7 @@
 
     @media screen and (max-width: 480px) {
         .buttons {
-            flex-wrap: nowrap; /* ปุ่มยังคงเรียงในแนวนอน */
+            flex-wrap: nowrap;
         }
 
         .buttons a {
