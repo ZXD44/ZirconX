@@ -126,13 +126,13 @@
 
     .user {
         text-align: right;
-        color: #ffffff; /* สีขาวที่ชัดขึ้นสำหรับผู้ใช้ */
+        color: #00796b; /* สีเขียวสำหรับผู้ใช้ */
         font-weight: bold; /* เพิ่มความชัดเจน */
     }
 
     .ai {
         text-align: left;
-        color: #ffffff; /* เปลี่ยนจากสีดำเป็นสีขาว */
+        color: #ffffff; /* สีขาวสำหรับ AI */
         font-style: italic; /* เพิ่มความแตกต่าง */
     }
 
@@ -161,8 +161,17 @@
         background-color: #00796b;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 50%;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-group button::after {
+        content: '➤'; /* ใช้ลูกศรแทนคำว่า "ส่ง" */
+        font-size: 16px;
+        color: white;
     }
 
     /* ปรับการแสดงผลสำหรับหน้าจอขนาดเล็ก */
