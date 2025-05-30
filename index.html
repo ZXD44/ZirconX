@@ -20,15 +20,70 @@
       box-shadow: 0 0 18px rgba(0,0,0,0.25);
     }
     img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #fff; }
-    h1 { margin: 10px 0; font-size: 28px; }
-    p { font-size: 18px; margin-bottom: 20px; color: #b3b3b3; }
+    h1 {
+      margin: 10px 0 0 0; font-size: 38px; position: relative;
+      letter-spacing: 2px;
+      display: inline-block;
+      padding: 10px 32px;
+      color: #fff;
+      z-index: 1;
+    }
+    .fire-glow {
+      box-shadow:
+        0 0 12px 4px #fff,
+        0 0 28px 8px #00bfff,
+        0 0 38px 15px #39ff14,
+        0 0 48px 21px #fffb00,
+        0 0 60px 26px #ff005e;
+      animation: fireGlow 2.5s infinite alternate;
+      border-radius: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes fireGlow {
+      0% {
+        box-shadow:
+          0 0 12px 4px #fff,
+          0 0 28px 8px #00bfff,
+          0 0 38px 15px #39ff14,
+          0 0 48px 21px #fffb00,
+          0 0 60px 26px #ff005e;
+      }
+      50% {
+        box-shadow:
+          0 0 25px 10px #fff,
+          0 0 40px 16px #00bfff,
+          0 0 50px 28px #39ff14,
+          0 0 70px 35px #fffb00,
+          0 0 80px 46px #ff005e;
+      }
+      100% {
+        box-shadow:
+          0 0 18px 6px #fff,
+          0 0 30px 10px #00bfff,
+          0 0 38px 17px #39ff14,
+          0 0 55px 25px #fffb00,
+          0 0 60px 30px #ff005e;
+      }
+    }
     .welcome {
       font-size: 19px;
-      color: #ffe98a;
-      margin-bottom: 16px;
       font-weight: 600;
+      margin-bottom: 16px;
       letter-spacing: 1px;
+      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+      display:inline-block;
     }
+    @keyframes rainbow {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
+    }
+    p { font-size: 18px; margin-bottom: 20px; color: #b3b3b3; }
     .buttons { display: flex; justify-content: center; gap: 15px; margin: 20px 0 10px 0; flex-wrap: wrap;}
     .buttons a {
       display: flex; align-items: center; text-decoration: none; padding: 11px 20px;
@@ -86,9 +141,9 @@
     .bubble pre, .bubble code { font-family: 'Fira Mono', 'Consolas', 'monospace'; font-size: 15px; }
     .bubble code { background: #1a2330; padding: 2px 4px; border-radius: 5px; color: #fff;}
     .bubble pre {
-      background: #232b36; color: #fff; padding: 10px 14px; border-radius: 8px; margin: 14px 0 0 0; 
+      background: #232b36; color: #fff; padding: 10px 14px; border-radius: 8px; margin: 14px 0 0 0;
       overflow-x: auto; overflow-y: auto;
-      white-space: pre-wrap;      /* <--- สำคัญ! */
+      white-space: pre-wrap;
       word-break: break-all;
       position: relative;
       max-width: 70vw;
@@ -104,6 +159,7 @@
     .show-full-btn {
       background: #fdca40; border: none; border-radius: 7px; color: #222; font-size: 13px; padding: 2px 10px;
       margin-top: 8px; cursor: pointer; opacity: 0.9; transition: opacity 0.2s;
+      display: inline-block;
     }
     .show-full-btn:hover { opacity: 1; }
     .input-group { display: flex; gap: 10px; }
@@ -162,7 +218,7 @@
   <div class="container">
     <div class="welcome">✨ ยินดีต้อนรับสู่โปรไฟล์ของเรา! ✨</div>
     <img src="https://yt3.googleusercontent.com/3fvXW4ZKC5MX7SjTlAP4Xqzh4lPWAVVv_Sx6Yo_2iB4KTn0g2ol4CLoZJDk1rw1CqAvDvngqSRI=s160-c-k-c0x00ffffff-no-rj" alt="รูปโปรไฟล์">
-    <h1> ZirconX </h1>
+    <h1 class="fire-glow">ZirconX</h1>
     <p>👨‍💻 นักพัฒนาเว็บ | 🎮 เกมเมอร์ | 🎥 ครีเอเตอร์</p>
     <div class="buttons">
       <a href="https://github.com/ZXD44" class="github"><img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub"> ไกท์ฮับ</a>
@@ -228,10 +284,11 @@
 
       let formatted = isHtml ? text : renderMarkdown(text);
 
+      // ถ้าข้อความยาว ให้แยกปุ่ม "อ่านทั้งหมด" ออกเป็นแถวใหม่
       if(sender === "ai" && text.length > 400){
         let shortText = formatted.slice(0, 400) + "...";
-        bubble.innerHTML = `${shortText}
-          <button class="show-full-btn" onclick="showPopup(\`${escapeJsString(text)}\`)">อ่านทั้งหมด</button>
+        bubble.innerHTML = `<div>${shortText}</div>
+          <div style='text-align:right'><button class="show-full-btn" onclick="showPopup(\`${escapeJsString(text)}\`)">อ่านทั้งหมด</button></div>
           <div class="bubble-meta">${label} ${datetime}</div>
         `;
       } else {
@@ -256,9 +313,11 @@
     }
 
     function renderMarkdown(text) {
+      // code block
       let html = text.replace(/```(\w+)?\n?([\s\S]*?)```/g, function(_, lang, code){
         return `<pre><code class="language-${lang||''}">${escapeHtml(code)}</code></pre>`;
       });
+      // inline code
       html = html.replace(/`([^`]+)`/g, function(_, code){
         return `<code>${escapeHtml(code)}</code>`;
       });
