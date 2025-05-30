@@ -95,6 +95,14 @@
         background-color: #004d40;
     }
 
+    /* ปุ่มอัพโหลด */
+    .upload {
+        background: #009688;
+    }
+    .upload:hover {
+        background: #00bfa5;
+    }
+
     .chat-container {
         margin-top: 20px;
         background: rgba(255, 255, 255, 0.1);
@@ -187,6 +195,25 @@
         color: white;
     }
 
+    /* ==== อัพโหลด modal ==== */
+    .upload-modal {
+        position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+    }
+    .modal-content {
+        background: #23272e; color: #fff; padding: 32px 24px; border-radius: 16px; min-width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        position: relative; max-width: 90vw;
+    }
+    .close {
+        position: absolute; top: 10px; right: 18px; font-size: 2em; color: #fff; cursor: pointer;
+    }
+    .drop-area {
+        border: 2px dashed #009688; border-radius: 10px; padding: 40px 16px; text-align: center; margin-bottom: 18px; background: rgba(255,255,255,0.05);
+    }
+    .drop-area.highlight { border-color: #ff9800; background: rgba(0,150,136,0.12);}
+    .file-label { color: #00bfa5; text-decoration: underline; cursor: pointer;}
+    #uploadStatus { margin-top: 10px; font-size: 1em; }
+
     /* ปรับการแสดงผลสำหรับหน้าจอขนาดเล็ก */
     @media screen and (max-width: 768px) {
         body {
@@ -252,7 +279,7 @@
         <h1> ZirconX </h1>
         <p>👨‍💻 นักพัฒนาเว็บ | 🎮 เกมเมอร์ | 🎥 ครีเอเตอร์</p>
         <p>✨ ยินดีต้อนรับสู่โปรไฟล์ของเรา! ✨</p>
-        <p>🚶‍♂️ ความสำเร็จไม่ได้มาจากการก้าวกระโดด แต่มาจากการก้าวเล็ก ๆ อย่างสม่ำเสมอ 🧩</p>
+        <p>🚶‍♂️ ความสำเร็จไม่ได้มาจากการก้าวกระโดด แต่มาจากการก้าวเล็ก ๆ อย่างต่อเนื่อง 🚀</p>
 
         <!-- ปุ่มลิงก์ -->
         <div class="buttons">
@@ -268,6 +295,11 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1200px-Telegram_2019_Logo.svg.png" alt="Contact">
                 ติดต่อ
             </a>
+            <!-- ปุ่มอัพโหลดไฟล์ -->
+            <a href="#" class="upload" id="uploadBtn">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Upload">
+                อัพโหลดไฟล์
+            </a>
         </div>
 
         <!-- กล่องข้อความแชท AI -->
@@ -281,7 +313,21 @@
         </div>
     </div>
 
+    <!-- Modal อัพโหลดไฟล์ -->
+    <div id="uploadModal" class="upload-modal" style="display:none;">
+        <div class="modal-content">
+            <span id="closeUpload" class="close">&times;</span>
+            <h2>อัปโหลดไฟล์ไป Telegram</h2>
+            <div id="dropArea" class="drop-area">
+                <p>ลากไฟล์มาวางที่นี่ หรือ <label for="fileElem" class="file-label">เลือกไฟล์</label></p>
+                <input type="file" id="fileElem" multiple style="display:none;">
+            </div>
+            <div id="uploadStatus"></div>
+        </div>
+    </div>
+
 <script>
+    // ====== AI Chat ======
     const API_KEY = "AIzaSyBm-ab9oMT1tXlyCP0Fn-GlIPCrPa2uAtE";
     const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
@@ -336,6 +382,44 @@
     chatInput.addEventListener("keypress", function (e) {
         if (e.key === "Enter") sendMessage();
     });
+
+    // ====== อัพโหลดไฟล์ (Drag & Drop) ======
+    const uploadBtn = document.getElementById('uploadBtn');
+    const uploadModal = document.getElementById('uploadModal');
+    const closeUpload = document.getElementById('closeUpload');
+    const dropArea = document.getElementById('dropArea');
+    const fileElem = document.getElementById('fileElem');
+    const uploadStatus = document.getElementById('uploadStatus');
+
+    // เปิด modal
+    uploadBtn.onclick = e => { e.preventDefault(); uploadModal.style.display = 'flex'; }
+    closeUpload.onclick = () => { uploadModal.style.display = 'none'; uploadStatus.textContent = ""; }
+    window.onclick = e => { if(e.target===uploadModal){ uploadModal.style.display='none'; uploadStatus.textContent=""; } }
+
+    // Drag & Drop Events
+    ;['dragenter','dragover'].forEach(evn=>dropArea.addEventListener(evn,e=>{e.preventDefault(); e.stopPropagation(); dropArea.classList.add('highlight');}));
+    ;['dragleave','drop'].forEach(evn=>dropArea.addEventListener(evn,e=>{e.preventDefault(); e.stopPropagation(); dropArea.classList.remove('highlight');}));
+    dropArea.addEventListener('drop', e => {
+        handleFiles(e.dataTransfer.files);
+    });
+    dropArea.addEventListener('click', ()=>fileElem.click());
+    fileElem.addEventListener('change', ()=>handleFiles(fileElem.files));
+
+    // อัพโหลดไฟล์ไป backend
+    function handleFiles(files) {
+        if (!files.length) return;
+        uploadStatus.textContent = "กำลังอัปโหลด...";
+        const formData = new FormData();
+        for (let f of files) formData.append('files', f);
+        // สมมติว่ามี backend endpoint รับชื่อ /upload_telegram
+        fetch('/upload_telegram', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res=>res.ok ? res.text() : Promise.reject(res.statusText))
+        .then(txt=>uploadStatus.textContent = '✅ อัปโหลดสำเร็จ: '+txt)
+        .catch(err=>uploadStatus.textContent = '❌ อัปโหลดล้มเหลว: '+err);
+    }
 </script>
 
 </body>
