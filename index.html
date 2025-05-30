@@ -10,72 +10,120 @@
     body {
       font-family: 'Sarabun', sans-serif;
       margin: 0; padding: 0;
-      background: url('https://i.redd.it/tddy4990hfk61.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #111 0%, #212245 100%);
       color: #fff; text-align: center;
     }
     .container {
       max-width: 600px; margin: 40px auto; padding: 20px;
-      background: rgba(22,27,34,0.92); border-radius: 15px;
-      box-shadow: 0 0 18px rgba(0,0,0,0.25);
+      background: rgba(22,27,34,0.97); border-radius: 18px;
+      box-shadow: 0 0 24px 2px #1ec9ff, 0 0 140px 10px #4e00c2, 0 0 90px 6px #ff2a79, 0 0 0 #fff;
+      position:relative;
     }
-    img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #fff; }
-    h1 {
-      margin: 10px 0 0 0; font-size: 38px; position: relative;
-      letter-spacing: 2px;
+    /* Hamburger menu */
+    .menu-btn {
+      position: absolute;
+      top: 18px; right: 25px;
+      z-index: 10;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      transition: transform .16s;
+    }
+    .menu-btn:active { transform: scale(0.95);}
+    .menu-btn .bar {
+      display: block;
+      width: 28px; height: 4px;
+      margin: 5px 0;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #ff6c00, #ffe700, #32ff7a, #00e6f6, #a259ff, #ff296a, #ff6c00);
+      background-size: 200% 200%;
+      animation: gradientbar 2s linear infinite;
+      box-shadow: 0 2px 12px 0 #58f9ff99;
+    }
+    @keyframes gradientbar {
+      0% {background-position:0% 50%;}
+      100% {background-position:100% 50%;}
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 46px; right: 25px;
+      background: rgba(30,30,41,0.97);
+      min-width: 172px;
+      border-radius: 11px;
+      box-shadow: 0 8px 40px #1ec9ff88, 0 0 2px #fff;
+      z-index: 99;
+      padding: 8px 0;
+      text-align: left;
+      animation: menuAppear .25s;
+    }
+    @keyframes menuAppear {
+      from { opacity: 0;transform:translateY(-10px);}
+      to { opacity: 1;transform:translateY(0);}
+    }
+    .dropdown-menu button {
+      width: 100%; border: none; background: none; color: #fff; font-size: 17px;
+      padding: 11px 20px; cursor: pointer; text-align: left; font-weight: 600;
+      transition: background .17s, color .17s;
+      border-radius: 7px;
+    }
+    .dropdown-menu button:hover {
+      background: linear-gradient(90deg, #1ec9ff, #ff2a79, #ffe700, #32ff7a, #a259ff, #1ec9ff);
+      color: #181b2b;
+    }
+
+    .flame {
       display: inline-block;
-      padding: 10px 32px;
-      color: #fff;
-      z-index: 1;
-    }
-    .fire-glow {
-      box-shadow:
-        0 0 12px 4px #fff,
-        0 0 28px 8px #00bfff,
-        0 0 38px 15px #39ff14,
-        0 0 48px 21px #fffb00,
-        0 0 60px 26px #ff005e;
-      animation: fireGlow 2.5s infinite alternate;
-      border-radius: 18px;
       position: relative;
-      z-index: 2;
+      top: 10px;
+      margin-right: 10px;
+      width: 32px;
+      height: 38px;
+      vertical-align: middle;
     }
-    @keyframes fireGlow {
-      0% {
-        box-shadow:
-          0 0 12px 4px #fff,
-          0 0 28px 8px #00bfff,
-          0 0 38px 15px #39ff14,
-          0 0 48px 21px #fffb00,
-          0 0 60px 26px #ff005e;
-      }
-      50% {
-        box-shadow:
-          0 0 25px 10px #fff,
-          0 0 40px 16px #00bfff,
-          0 0 50px 28px #39ff14,
-          0 0 70px 35px #fffb00,
-          0 0 80px 46px #ff005e;
-      }
-      100% {
-        box-shadow:
-          0 0 18px 6px #fff,
-          0 0 30px 10px #00bfff,
-          0 0 38px 17px #39ff14,
-          0 0 55px 25px #fffb00,
-          0 0 60px 30px #ff005e;
-      }
+    .flame span {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50% 50% 45% 45% / 60% 60% 100% 100%;
+      opacity: 0.78;
+      animation: flameMove 1.6s infinite;
     }
+    .flame .f1 {
+      width: 32px; height: 38px; background: radial-gradient(ellipse at 55% 20%, #ffe700 55%, #ffbc00 100%);
+      z-index: 1; filter: blur(0.7px);
+      animation-delay: 0s;
+    }
+    .flame .f2 {
+      width: 22px; height: 28px; background: radial-gradient(ellipse at 60% 15%, #ff2a79 60%, #ffbc00 100%);
+      z-index: 2; opacity: 0.72; filter: blur(0.2px);
+      animation-delay: 0.5s;
+    }
+    .flame .f3 {
+      width: 14px; height: 16px; background: radial-gradient(ellipse at 60% 15%, #fff 60%, #ffe700 100%);
+      z-index: 3; opacity: 0.55;
+      animation-delay: 0.9s;
+    }
+    @keyframes flameMove {
+      0% { transform:translateX(-50%) scaleY(1);}
+      25% { opacity:0.84;}
+      40% { transform:translateX(-50%) scaleY(1.04) scaleX(1.05);}
+      60% { opacity:.8;}
+      80% { transform:translateX(-50%) scaleY(0.98);}
+      100% {transform:translateX(-50%) scaleY(1);}
+    }
+
     .welcome {
-      font-size: 19px;
-      font-weight: 600;
+      font-size: 21px;
+      font-weight: 700;
       margin-bottom: 16px;
       letter-spacing: 1px;
-      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
+      background: linear-gradient(90deg, #ff2a79, #ffe700, #32ff7a, #00e6f6, #a259ff, #ff296a, #ff2a79);
       background-size: 400% 400%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: rainbow 5s linear infinite;
+      animation: rainbow 4.5s linear infinite;
       display:inline-block;
     }
     @keyframes rainbow {
@@ -88,56 +136,60 @@
     .buttons a {
       display: flex; align-items: center; text-decoration: none; padding: 11px 20px;
       border-radius: 8px; font-size: 18px; font-weight: bold; color: #fff; transition: 0.3s;
+      background: linear-gradient(90deg, #1ec9ff, #a259ff, #ff2a79);
+      background-size: 220% 220%;
+      box-shadow: 0 0 12px #1ec9ff99;
+      border: none;
+      outline: none;
     }
     .buttons a img { margin-right: 10px; width: 24px; height: 24px; }
-    .github { background-color: #24292e; }
-    .github:hover { background-color: #484f58; }
-    .donate { background-color: #ff5722; }
-    .donate:hover { background-color: #e64a19; }
-    .contact { background-color: #00796b; }
-    .contact:hover { background-color: #004d40; }
+    .github:hover, .donate:hover, .contact:hover {
+      filter: brightness(1.12) saturate(1.3);
+      box-shadow: 0 0 22px #ffe70077, 0 0 7px #32ff7a77;
+      background-position: 100% 0;
+    }
     .chat-container {
       margin-top: 24px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.10);
       padding: 18px;
-      border-radius: 10px;
+      border-radius: 12px;
     }
     .chat-container h2 { margin: 0 0 8px 0; }
     .chat-box {
       height: 320px; overflow-y: auto; padding: 10px 0;
-      border-radius: 12px; margin-bottom: 12px; background: rgba(0,0,0,0.13);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      border-radius: 14px; margin-bottom: 12px; background: rgba(0,0,0,0.15);
+      box-shadow: 0 4px 8px rgba(30,201,255,0.08);
       display: flex; flex-direction: column; gap: 10px;
     }
     .bubble {
-      padding: 12px 18px;
+      padding: 13px 18px;
       border-radius: 18px;
       max-width: 85%;
       word-break: break-word;
       margin-bottom: 2px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(30,201,255,0.14);
       position: relative;
       font-size: 16px;
+      border: 1px solid #32ff7a88;
+      transition: background .18s;
     }
     .user {
       align-self: flex-end;
-      background: rgba(173,216,230,0.88); /* LightBlue ฟ้าอ่อน */
-      color: #1c2b34;
+      background: linear-gradient(90deg, #00e6f6, #32ff7a 70%);
+      color: #0d2b34;
       border-bottom-right-radius: 6px;
-      border: 1px solid #8ad7ef;
     }
     .ai {
       align-self: flex-start;
-      background: rgba(240,240,240,0.94); /* ขาวอมเทา */
-      color: #222;
+      background: linear-gradient(90deg, #ffe700, #ff2a79 80%);
+      color: #2b1c1c;
       border-bottom-left-radius: 6px;
-      border: 1px solid #c7c7d3;
     }
     .bubble .bubble-meta {
       font-size: 12px; color: #9193a1; margin-top: 6px; display: flex; align-items: center; gap: 8px;
     }
-    .bubble .ai-label { font-weight: bold; color: #1877f2; }
-    .bubble .user-label { font-weight: bold; color: #22ab5d; }
+    .bubble .ai-label { font-weight: bold; color: #ff2a79; }
+    .bubble .user-label { font-weight: bold; color: #32ff7a; }
     .bubble pre, .bubble code { font-family: 'Fira Mono', 'Consolas', 'monospace'; font-size: 15px; }
     .bubble code { background: #1a2330; padding: 2px 4px; border-radius: 5px; color: #fff;}
     .bubble pre {
@@ -151,44 +203,46 @@
     .copy-btn {
       display:inline-block;
       margin-top: 8px;
-      background: #5dc1f8; border: none; border-radius: 7px; color: #222;
+      background: linear-gradient(90deg, #1ec9ff, #ff2a79);
+      border: none; border-radius: 7px; color: #fff;
       font-size: 13px; padding: 3px 14px; cursor: pointer; opacity: 0.92;
       transition: opacity 0.2s;
+      font-weight: 600;
     }
-    .copy-btn:hover { opacity: 1; }
+    .copy-btn:hover { opacity: 1; background-position: 100% 0;}
     .show-full-btn {
-      background: #fdca40; border: none; border-radius: 7px; color: #222; font-size: 13px; padding: 2px 10px;
+      background: linear-gradient(90deg, #ffe700, #ff2a79);
+      border: none; border-radius: 7px; color: #181b2b; font-size: 13px; padding: 2px 10px;
       margin-top: 8px; cursor: pointer; opacity: 0.9; transition: opacity 0.2s;
-      display: inline-block;
+      display: inline-block; font-weight: 600;
     }
-    .show-full-btn:hover { opacity: 1; }
+    .show-full-btn:hover { opacity: 1; background-position: 100% 0;}
     .input-group { display: flex; gap: 10px; }
     .input-group input {
       flex: 1; padding: 12px; border-radius: 7px;
-      border: 1px solid #555; background: rgba(255,255,255,0.12); color: #fff;
+      border: 1px solid #32ff7a; background: rgba(255,255,255,0.15); color: #fff;
       font-size: 16px;
+      box-shadow: 0 2px 8px #1ec9ff33;
     }
     .input-group button {
       width: 54px; height: 54px;
-      background: linear-gradient(135deg, #00796b, #004d40);
+      background: linear-gradient(135deg, #ff2a79, #32ff7a);
       color: #fff; border: none; border-radius: 50%;
       cursor: pointer; font-size: 22px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.18);
-      transition: transform 0.2s;
+      box-shadow: 0 3px 12px rgba(30,201,255,0.24);
+      transition: transform 0.2s, background .16s;
       display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
     }
     .input-group button:active { transform: scale(0.97); }
-    .history-btn, .clear-btn {
-      padding: 5px 16px; border-radius: 8px; 
-      border: none; margin-bottom: 8px; cursor: pointer; font-size: 15px;
-      margin-left: 8px;
-      background: #e9f2fb; color: #1976d2; font-weight: bold;
-      border: 1px solid #b9daf6;
-      transition: background .16s;
+    @media screen and (max-width: 768px) {
+      .container { margin: 10px auto; padding: 7px; max-width: 99vw; }
+      img { width: 80px; height: 80px; }
+      .chat-box { height: 170px; }
+      .popup {padding: 16px 5vw 18px 5vw;}
+      .menu-btn {top: 12px; right: 12px;}
+      .dropdown-menu {right: 12px;}
     }
-    .history-btn { margin-left: 0; margin-right: 8px; float: left;}
-    .history-btn:hover, .clear-btn:hover { background: #d5e6f9; }
-    .btns-row { display:flex; justify-content: flex-start; gap:8px;}
     /* Popup styling */
     .popup-bg {
       display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -206,19 +260,30 @@
     .popup .popup-controls {
       margin: 16px 0 0 0; display: flex; gap: 12px; justify-content: flex-end;
     }
-    @media screen and (max-width: 768px) {
-      .container { margin: 10px auto; padding: 7px; max-width: 99vw; }
-      img { width: 80px; height: 80px; }
-      .chat-box { height: 170px; }
-      .popup {padding: 16px 5vw 18px 5vw;}
-    }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Hamburger Menu -->
+    <button class="menu-btn" id="menuBtn" aria-label="เมนู">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <button onclick="showHistory();toggleMenu()">ดูประวัติแชท</button>
+      <button onclick="clearChat();toggleMenu()">ล้างแชท</button>
+    </div>
     <div class="welcome">✨ ยินดีต้อนรับสู่โปรไฟล์ของเรา! ✨</div>
     <img src="https://yt3.googleusercontent.com/3fvXW4ZKC5MX7SjTlAP4Xqzh4lPWAVVv_Sx6Yo_2iB4KTn0g2ol4CLoZJDk1rw1CqAvDvngqSRI=s160-c-k-c0x00ffffff-no-rj" alt="รูปโปรไฟล์">
-    <h1 class="fire-glow">ZirconX</h1>
+    <h1>
+      <span class="flame">
+        <span class="f1"></span>
+        <span class="f2"></span>
+        <span class="f3"></span>
+      </span>
+      ZirconX
+    </h1>
     <p>👨‍💻 นักพัฒนาเว็บ | 🎮 เกมเมอร์ | 🎥 ครีเอเตอร์</p>
     <div class="buttons">
       <a href="https://github.com/ZXD44" class="github"><img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub"> ไกท์ฮับ</a>
@@ -226,10 +291,6 @@
       <a href="https://t.me/ZirconXD" class="contact"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1200px-Telegram_2019_Logo.svg.png" alt="Contact"> ติดต่อ</a>
     </div>
     <div class="chat-container">
-      <div class="btns-row">
-        <button class="history-btn" onclick="showHistory()">ดูประวัติแชท</button>
-        <button class="clear-btn" onclick="clearChat()">ล้างแชท</button>
-      </div>
       <h2>พูดคุยกับ AI</h2>
       <div id="chatBox" class="chat-box"></div>
       <div class="input-group">
@@ -249,6 +310,19 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>
+    // Hamburger menu
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    menuBtn.onclick = toggleMenu;
+    function toggleMenu() {
+      dropdownMenu.style.display = (dropdownMenu.style.display === "block" ? "none" : "block");
+    }
+    document.addEventListener('click', function(e) {
+      if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
     const API_KEY = "62b896fcf06bf3abe0f767353a628cf2318a896030406fb3fc53d6cfed215dbe";
     const API_URL = "https://api.together.xyz/v1/chat/completions";
     const MODEL = "deepseek-ai/DeepSeek-V3";
