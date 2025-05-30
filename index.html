@@ -22,6 +22,13 @@
     img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #fff; }
     h1 { margin: 10px 0; font-size: 28px; }
     p { font-size: 18px; margin-bottom: 20px; color: #b3b3b3; }
+    .welcome {
+      font-size: 19px;
+      color: #ffe98a;
+      margin-bottom: 16px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
     .buttons { display: flex; justify-content: center; gap: 15px; margin: 20px 0 10px 0; flex-wrap: wrap;}
     .buttons a {
       display: flex; align-items: center; text-decoration: none; padding: 11px 20px;
@@ -56,7 +63,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       position: relative;
       font-size: 16px;
-      /* ฟองแชทที่อ่านง่าย */
     }
     .user {
       align-self: flex-end;
@@ -80,8 +86,12 @@
     .bubble pre, .bubble code { font-family: 'Fira Mono', 'Consolas', 'monospace'; font-size: 15px; }
     .bubble code { background: #1a2330; padding: 2px 4px; border-radius: 5px; color: #fff;}
     .bubble pre {
-      background: #232b36; color: #fff; padding: 10px 14px; border-radius: 8px; margin: 14px 0 0 0; overflow: auto;
+      background: #232b36; color: #fff; padding: 10px 14px; border-radius: 8px; margin: 14px 0 0 0; 
+      overflow-x: auto; overflow-y: auto;
+      white-space: pre-wrap;      /* <--- สำคัญ! */
+      word-break: break-all;
       position: relative;
+      max-width: 70vw;
     }
     .copy-btn {
       display:inline-block;
@@ -120,8 +130,9 @@
       border: 1px solid #b9daf6;
       transition: background .16s;
     }
+    .history-btn { margin-left: 0; margin-right: 8px; float: left;}
     .history-btn:hover, .clear-btn:hover { background: #d5e6f9; }
-    .btns-row { display:flex; justify-content: flex-end; gap:8px;}
+    .btns-row { display:flex; justify-content: flex-start; gap:8px;}
     /* Popup styling */
     .popup-bg {
       display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -149,18 +160,15 @@
 </head>
 <body>
   <div class="container">
-    <!-- โปรไฟล์แนะนำตัว -->
+    <div class="welcome">✨ ยินดีต้อนรับสู่โปรไฟล์ของเรา! ✨</div>
     <img src="https://yt3.googleusercontent.com/3fvXW4ZKC5MX7SjTlAP4Xqzh4lPWAVVv_Sx6Yo_2iB4KTn0g2ol4CLoZJDk1rw1CqAvDvngqSRI=s160-c-k-c0x00ffffff-no-rj" alt="รูปโปรไฟล์">
     <h1> ZirconX </h1>
     <p>👨‍💻 นักพัฒนาเว็บ | 🎮 เกมเมอร์ | 🎥 ครีเอเตอร์</p>
-    <p>✨ ยินดีต้อนรับสู่โปรไฟล์ของเรา! ✨</p>
     <div class="buttons">
       <a href="https://github.com/ZXD44" class="github"><img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub"> ไกท์ฮับ</a>
       <a href="https://beacons.ai/zirconx" class="donate"><img src="https://cdn-icons-png.freepik.com/512/13013/13013821.png" alt="Donate"> ร้านค้า</a>
       <a href="https://t.me/ZirconXD" class="contact"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1200px-Telegram_2019_Logo.svg.png" alt="Contact"> ติดต่อ</a>
     </div>
-
-    <!-- กล่องข้อความแชท AI -->
     <div class="chat-container">
       <div class="btns-row">
         <button class="history-btn" onclick="showHistory()">ดูประวัติแชท</button>
@@ -174,8 +182,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Popup for full message -->
   <div class="popup-bg" id="popupBg">
     <div class="popup" id="popupBox">
       <button class="close-btn" onclick="closePopup()">ปิด</button>
@@ -185,7 +191,6 @@
       </div>
     </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>
     const API_KEY = "62b896fcf06bf3abe0f767353a628cf2318a896030406fb3fc53d6cfed215dbe";
@@ -199,7 +204,7 @@
     const popupContent = document.getElementById("popupContent");
     const popupCopyBtn = document.getElementById("popupCopyBtn");
 
-    let popupFullText = ""; // เก็บข้อความเต็มของ popup
+    let popupFullText = "";
     let chatHistory = JSON.parse(sessionStorage.getItem("chatHistory") || "[]");
 
     function saveChatHistory() {
@@ -221,21 +226,18 @@
         : "<span class='ai-label'>AI</span>";
       let datetime = `<span>${time}</span>`;
 
-      // code highlight
       let formatted = isHtml ? text : renderMarkdown(text);
 
-      // สั้น: แสดงปกติ, ยาว: แสดงบางส่วน + ปุ่ม popup
       if(sender === "ai" && text.length > 400){
         let shortText = formatted.slice(0, 400) + "...";
         bubble.innerHTML = `${shortText}
-          <button class="show-full-btn" onclick="showPopup(\`${escapeHtml(text)}\`)">อ่านทั้งหมด</button>
+          <button class="show-full-btn" onclick="showPopup(\`${escapeJsString(text)}\`)">อ่านทั้งหมด</button>
           <div class="bubble-meta">${label} ${datetime}</div>
         `;
       } else {
         bubble.innerHTML = `${formatted}<div class="bubble-meta">${label} ${datetime}</div>`;
       }
 
-      // เพิ่มปุ่ม copy ให้กับ code block
       setTimeout(() => {
         bubble.querySelectorAll('pre code').forEach((block) => {
           if(!block.parentElement.querySelector(".copy-btn")){
@@ -254,15 +256,12 @@
     }
 
     function renderMarkdown(text) {
-      // แปลง code block
       let html = text.replace(/```(\w+)?\n?([\s\S]*?)```/g, function(_, lang, code){
         return `<pre><code class="language-${lang||''}">${escapeHtml(code)}</code></pre>`;
       });
-      // inline code
       html = html.replace(/`([^`]+)`/g, function(_, code){
         return `<code>${escapeHtml(code)}</code>`;
       });
-      // แปลงขึ้นบรรทัดใหม่
       html = html.replace(/\n/g, "<br>");
       return html;
     }
@@ -272,7 +271,9 @@
         return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]);
       });
     }
-
+    function escapeJsString(str) {
+      return str.replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/"/g,'\\"').replace(/`/g,"\\`").replace(/\$/g,"\\$");
+    }
     function copyText(text){
       navigator.clipboard.writeText(text);
     }
@@ -291,12 +292,11 @@
     }
 
     function showHistory(){
-      // เปิด popup แสดงประวัติย้อนหลัง
       let html = chatHistory.map(item=>{
         let label = item.sender === "user" ? "คุณ" : "AI";
         let time = item.time;
         let content = renderMarkdown(item.text);
-        return `<div style="margin-bottom:12px;"><b>${label}</b> <span style="font-size:12px;color:#b2b2b2">${time}</span><br>${content}</div>`;
+        return `<div style="margin-bottom:12px;text-align:left"><b>${label}</b> <span style="font-size:12px;color:#b2b2b2">${time}</span><br>${content}</div>`;
       }).join("<hr>");
       popupFullText = chatHistory.map(item=>item.text).join("\n\n");
       popupContent.innerHTML = html || "<i>ยังไม่มีประวัติ</i>";
@@ -369,7 +369,6 @@
       if (e.key === "Enter") sendMessage();
     });
 
-    // โหลดประวัติแชท (session)
     displayHistory();
   </script>
 </body>
