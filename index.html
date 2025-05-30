@@ -3,285 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>โปรไฟล์แนะนำตัว</title>
+    <title>โปรไฟล์แนะนำตัว & อัปโหลดไฟล์ Telegram</title>
     <link rel="icon" href="https://iili.io/3AvPQi7.png">
-<style>
-    body {
-        font-family: 'Sarabun', sans-serif;
-        margin: 0;
-        padding: 0;
-        background: url('https://i.redd.it/tddy4990hfk61.jpg') no-repeat center center fixed;
-        background-size: cover;
-        color: #ffffff;
-        text-align: center;
-    }
-
-    .container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        background: rgba(22, 27, 34, 0.85);
-        border-radius: 15px;
-        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
-    }
-
-    img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid #ffffff;
-    }
-
-    h1 {
-        margin: 10px 0;
-        font-size: 28px;
-    }
-
-    p {
-        font-size: 18px;
-        margin-bottom: 20px;
-        color: #b3b3b3;
-    }
-
-    .buttons {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 20px;
-        flex-wrap: nowrap;
-    }
-
-    .buttons a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        padding: 12px 20px;
-        border-radius: 8px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #ffffff;
-        transition: 0.3s;
-        flex-shrink: 0;
-    }
-
-    .buttons a img {
-        margin-right: 10px;
-        width: 24px;
-        height: 24px;
-    }
-
-    .github {
-        background-color: #24292e;
-    }
-
-    .github:hover {
-        background-color: #484f58;
-    }
-
-    .donate {
-        background-color: #ff5722;
-    }
-
-    .donate:hover {
-        background-color: #e64a19;
-    }
-
-    .contact {
-        background-color: #00796b;
-    }
-
-    .contact:hover {
-        background-color: #004d40;
-    }
-
-    /* ปุ่มอัพโหลด */
-    .upload {
-        background: #009688;
-    }
-    .upload:hover {
-        background: #00bfa5;
-    }
-
-    .chat-container {
-        margin-top: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 10px;
-        text-align: right; /* หัวข้อแชททางขวามือ */
-    }
-
-    .chat-container h2 {
-        margin: 0;
-    }
-
-    .chat-box {
-        height: 300px;
-        overflow-y: auto;
-        padding: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.1); /* Glassmorphism Effect */
-        color: #d1d1d1; /* สีข้อความสนทนา */
-        border-radius: 10px;
-        margin-bottom: 10px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .chat-box p {
-        margin: 5px 0;
-    }
-
-    .user {
-        text-align: right;
-        color: #00796b; /* สีเขียวสำหรับผู้ใช้ */
-        font-weight: bold; /* เพิ่มความชัดเจน */
-    }
-
-    .ai {
-        text-align: left;
-        color: #ffffff; /* สีขาวสำหรับ AI */
-        font-style: italic; /* เพิ่มความแตกต่าง */
-    }
-
-    .input-group {
-        display: flex;
-        gap: 10px;
-    }
-
-    .input-group input {
-        flex: 1;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid rgba(255, 255, 255, 0.3); /* สี border glassmorphism */
-        background: rgba(255, 255, 255, 0.1); /* Glassmorphism Effect */
-        color: #ffffff; /* สีตัวอักษร */
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .input-group input::placeholder {
-        color: #d1d1d1; /* สีข้อความ placeholder */
-    }
-
-    .input-group button {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #00796b, #004d40); /* Gradient สี */
-        color: white;
-        border: none;
-        border-radius: 50%; /* ทำให้เป็นวงกลม */
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .input-group button:hover {
-        transform: scale(1.1); /* ขยายขนาดเมื่อ hover */
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .input-group button:active {
-        transform: scale(0.95); /* ย่อขนาดเมื่อกด */
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
-    .input-group button::after {
-        content: '➤'; /* ใช้ลูกศรเป็นไอคอน */
-        font-size: 16px;
-        color: white;
-    }
-
-    /* ==== อัพโหลด modal ==== */
-    .upload-modal {
-        position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; height: 100vh;
-        background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
-    }
-    .modal-content {
-        background: #23272e; color: #fff; padding: 32px 24px; border-radius: 16px; min-width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        position: relative; max-width: 90vw;
-    }
-    .close {
-        position: absolute; top: 10px; right: 18px; font-size: 2em; color: #fff; cursor: pointer;
-    }
-    .drop-area {
-        border: 2px dashed #009688; border-radius: 10px; padding: 40px 16px; text-align: center; margin-bottom: 18px; background: rgba(255,255,255,0.05);
-    }
-    .drop-area.highlight { border-color: #ff9800; background: rgba(0,150,136,0.12);}
-    .file-label { color: #00bfa5; text-decoration: underline; cursor: pointer;}
-    #uploadStatus { margin-top: 10px; font-size: 1em; }
-
-    /* ปรับการแสดงผลสำหรับหน้าจอขนาดเล็ก */
-    @media screen and (max-width: 768px) {
+    <style>
         body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.redd.it/tddy4990hfk61.jpg') no-repeat center center fixed;
             background-size: cover;
+            color: #ffffff;
+            text-align: center;
         }
 
         .container {
-            margin: 20px auto;
-            padding: 15px;
-            max-width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(22, 27, 34, 0.85);
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
         }
 
         img {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
         }
 
         h1 {
-            font-size: 24px;
+            margin: 10px 0;
+            font-size: 28px;
         }
 
         p {
-            font-size: 16px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #b3b3b3;
         }
 
-        .buttons a {
-            font-size: 16px;
-            padding: 10px 15px;
-        }
-
-        .buttons a img {
-            width: 20px;
-            height: 20px;
-        }
-
-        .chat-box {
-            height: 200px;
-        }
-
-        .input-group input,
-        .input-group button {
-            font-size: 14px;
-            padding: 8px;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
         .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
             flex-wrap: nowrap;
         }
 
         .buttons a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            transition: 0.3s;
             flex-shrink: 0;
         }
-    }
-</style>
+
+        .buttons a img {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .github { background-color: #24292e; }
+        .github:hover { background-color: #484f58; }
+        .donate { background-color: #ff5722; }
+        .donate:hover { background-color: #e64a19; }
+        .contact { background-color: #00796b; }
+        .contact:hover { background-color: #004d40; }
+        .upload { background: #009688; }
+        .upload:hover { background: #00bfa5; }
+
+        .chat-container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: right;
+        }
+        .chat-container h2 { margin: 0; }
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: #d1d1d1;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chat-box p { margin: 5px 0; }
+        .user { text-align: right; color: #00796b; font-weight: bold; }
+        .ai { text-align: left; color: #ffffff; font-style: italic; }
+        .input-group { display: flex; gap: 10px; }
+        .input-group input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .input-group input::placeholder { color: #d1d1d1; }
+        .input-group button {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00796b, #004d40);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .input-group button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .input-group button:active {
+            transform: scale(0.95);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .input-group button::after {
+            content: '➤';
+            font-size: 16px;
+            color: white;
+        }
+
+        /* ==== อัพโหลด modal ==== */
+        .upload-modal {
+            position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: #23272e; color: #fff; padding: 32px 24px; border-radius: 16px; min-width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            position: relative; max-width: 90vw;
+        }
+        .close {
+            position: absolute; top: 10px; right: 18px; font-size: 2em; color: #fff; cursor: pointer;
+        }
+        .drop-area {
+            border: 2px dashed #009688; border-radius: 10px; padding: 40px 16px; text-align: center; margin-bottom: 18px; background: rgba(255,255,255,0.05);
+        }
+        .drop-area.highlight { border-color: #ff9800; background: rgba(0,150,136,0.12);}
+        .file-label { color: #00bfa5; text-decoration: underline; cursor: pointer;}
+        #uploadStatus { margin-top: 10px; font-size: 1em; }
+        .file-list { margin-top: 20px; text-align: left;}
+        .file-list li { margin-bottom: 8px; }
+
+        @media screen and (max-width: 768px) {
+            body { background-size: cover; }
+            .container { margin: 20px auto; padding: 15px; max-width: 90%; }
+            img { width: 120px; height: 120px; }
+            h1 { font-size: 24px; }
+            p { font-size: 16px; }
+            .buttons a { font-size: 16px; padding: 10px 15px; }
+            .buttons a img { width: 20px; height: 20px; }
+            .chat-box { height: 200px; }
+            .input-group input, .input-group button { font-size: 14px; padding: 8px; }
+        }
+        @media screen and (max-width: 480px) {
+            .buttons { flex-wrap: nowrap; }
+            .buttons a { flex-shrink: 0; }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- โปรไฟล์แนะนำตัว -->
         <img src="https://yt3.googleusercontent.com/3fvXW4ZKC5MX7SjTlAP4Xqzh4lPWAVVv_Sx6Yo_2iB4KTn0g2ol4CLoZJDk1rw1CqAvDvngqSRI=s160-c-k-c0x00ffffff-no-rj" alt="รูปโปรไฟล์">
-        
         <h1> ZirconX </h1>
         <p>👨‍💻 นักพัฒนาเว็บ | 🎮 เกมเมอร์ | 🎥 ครีเอเตอร์</p>
         <p>✨ ยินดีต้อนรับสู่โปรไฟล์ของเรา! ✨</p>
         <p>🚶‍♂️ ความสำเร็จไม่ได้มาจากการก้าวกระโดด แต่มาจากการก้าวเล็ก ๆ อย่างต่อเนื่อง 🚀</p>
-
-        <!-- ปุ่มลิงก์ -->
         <div class="buttons">
             <a href="https://github.com/ZXD44" class="github">
                 <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub">
@@ -295,14 +201,11 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1200px-Telegram_2019_Logo.svg.png" alt="Contact">
                 ติดต่อ
             </a>
-            <!-- ปุ่มอัพโหลดไฟล์ -->
             <a href="#" class="upload" id="uploadBtn">
                 <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Upload">
                 อัพโหลดไฟล์
             </a>
         </div>
-
-        <!-- กล่องข้อความแชท AI -->
         <div class="chat-container">
             <h2>พูดคุยกับ AI</h2>
             <div id="chatBox" class="chat-box"></div>
@@ -312,8 +215,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal อัพโหลดไฟล์ -->
     <div id="uploadModal" class="upload-modal" style="display:none;">
         <div class="modal-content">
             <span id="closeUpload" class="close">&times;</span>
@@ -323,14 +224,13 @@
                 <input type="file" id="fileElem" multiple style="display:none;">
             </div>
             <div id="uploadStatus"></div>
+            <ul id="fileList" class="file-list"></ul>
         </div>
     </div>
-
 <script>
     // ====== AI Chat ======
     const API_KEY = "AIzaSyBm-ab9oMT1tXlyCP0Fn-GlIPCrPa2uAtE";
     const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
-
     const chatBox = document.getElementById("chatBox");
     const chatInput = document.getElementById("chatInput");
     const sendButton = document.getElementById("sendButton");
@@ -342,29 +242,19 @@
         chatBox.appendChild(message);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
-
     async function sendMessage() {
         const userInput = chatInput.value.trim();
         if (!userInput) return;
-
         addMessage(userInput, "user");
         chatInput.value = "";
-
         try {
             const response = await fetch(`${API_URL}?key=${API_KEY}`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    contents: [
-                        {
-                            parts: [{ text: userInput }]
-                        }
-                    ]
+                    contents: [ { parts: [{ text: userInput }] } ]
                 })
             });
-
             if (response.ok) {
                 const data = await response.json();
                 const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "ไม่พบคำตอบ";
@@ -377,50 +267,49 @@
             addMessage("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้", "ai");
         }
     }
-
     sendButton.addEventListener("click", sendMessage);
     chatInput.addEventListener("keypress", function (e) {
         if (e.key === "Enter") sendMessage();
     });
 
-    // ====== อัพโหลดไฟล์ (Drag & Drop) ======
+    // ====== อัพโหลดไฟล์ (HTML/JS + Backend Flask) ======
     const uploadBtn = document.getElementById('uploadBtn');
     const uploadModal = document.getElementById('uploadModal');
     const closeUpload = document.getElementById('closeUpload');
     const dropArea = document.getElementById('dropArea');
     const fileElem = document.getElementById('fileElem');
     const uploadStatus = document.getElementById('uploadStatus');
+    const fileList = document.getElementById('fileList');
 
-    // เปิด modal
     uploadBtn.onclick = e => { e.preventDefault(); uploadModal.style.display = 'flex'; }
-    closeUpload.onclick = () => { uploadModal.style.display = 'none'; uploadStatus.textContent = ""; }
-    window.onclick = e => { if(e.target===uploadModal){ uploadModal.style.display='none'; uploadStatus.textContent=""; } }
+    closeUpload.onclick = () => { uploadModal.style.display = 'none'; uploadStatus.textContent = ""; fileList.innerHTML=""; }
+    window.onclick = e => { if(e.target===uploadModal){ uploadModal.style.display='none'; uploadStatus.textContent=""; fileList.innerHTML=""; } }
 
-    // Drag & Drop Events
     ;['dragenter','dragover'].forEach(evn=>dropArea.addEventListener(evn,e=>{e.preventDefault(); e.stopPropagation(); dropArea.classList.add('highlight');}));
     ;['dragleave','drop'].forEach(evn=>dropArea.addEventListener(evn,e=>{e.preventDefault(); e.stopPropagation(); dropArea.classList.remove('highlight');}));
-    dropArea.addEventListener('drop', e => {
-        handleFiles(e.dataTransfer.files);
-    });
+    dropArea.addEventListener('drop', e => { handleFiles(e.dataTransfer.files); });
     dropArea.addEventListener('click', ()=>fileElem.click());
     fileElem.addEventListener('change', ()=>handleFiles(fileElem.files));
-
-    // อัพโหลดไฟล์ไป backend
     function handleFiles(files) {
         if (!files.length) return;
         uploadStatus.textContent = "กำลังอัปโหลด...";
+        fileList.innerHTML = '';
         const formData = new FormData();
-        for (let f of files) formData.append('files', f);
-        // สมมติว่ามี backend endpoint รับชื่อ /upload_telegram
-        fetch('/upload_telegram', {
+        Array.from(files).forEach(file => {
+            formData.append('files', file);
+            const li = document.createElement('li');
+            li.textContent = `${file.name} (${(file.size/1024).toFixed(1)} KB)`;
+            fileList.appendChild(li);
+        });
+        // เปลี่ยน URL ถ้า backend ไม่ได้รันที่ localhost:5000
+        fetch("http://localhost:5000/upload_telegram", {
             method: 'POST',
             body: formData
         })
         .then(res=>res.ok ? res.text() : Promise.reject(res.statusText))
-        .then(txt=>uploadStatus.textContent = '✅ อัปโหลดสำเร็จ: '+txt)
+        .then(txt=>uploadStatus.textContent = '✅ ผลลัพธ์: '+txt)
         .catch(err=>uploadStatus.textContent = '❌ อัปโหลดล้มเหลว: '+err);
     }
 </script>
-
 </body>
 </html>
