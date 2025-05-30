@@ -252,7 +252,7 @@
         <h1> ZirconX </h1>
         <p>👨‍💻 นักพัฒนาเว็บ | 🎮 เกมเมอร์ | 🎥 ครีเอเตอร์</p>
         <p>✨ ยินดีต้อนรับสู่โปรไฟล์ของเรา! ✨</p>
-        <p>🚶‍♂️ ความสำเร็จไม่ได้มาจากการก้าวกระโดด แต่มาจากการก้าวเล็ก ๆ อย่างสม่ำเสมอ 🧩</p>
+        <p>🚶‍♂️ ความสำเร็จไม่ได้มาจากการก้าวกระโดด แต่มาจากการก้าวเล็ก ๆ อ[...]</p>
 
         <!-- ปุ่มลิงก์ -->
         <div class="buttons">
@@ -282,8 +282,8 @@
     </div>
 
 <script>
-    const API_KEY = "AIzaSyBm-ab9oMT1tXlyCP0Fn-GlIPCrPa2uAtE";
-    const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+    const API_KEY = "62b896fcf06bf3abe0f767353a628cf2318a896030406fb3fc53d6cfed215dbe";
+    const API_URL = "https://api.together.xyz/v1/chat/completions";
 
     const chatBox = document.getElementById("chatBox");
     const chatInput = document.getElementById("chatInput");
@@ -305,23 +305,25 @@
         chatInput.value = "";
 
         try {
-            const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+            const response = await fetch(API_URL, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${API_KEY}`
                 },
                 body: JSON.stringify({
-                    contents: [
-                        {
-                            parts: [{ text: userInput }]
-                        }
-                    ]
+                    model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+                    messages: [
+                        { role: "user", content: userInput }
+                    ],
+                    max_tokens: 512,
+                    temperature: 0.7
                 })
             });
 
             if (response.ok) {
                 const data = await response.json();
-                const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "ไม่พบคำตอบ";
+                const aiReply = data.choices?.[0]?.message?.content || "ไม่พบคำตอบ";
                 addMessage(aiReply, "ai");
             } else {
                 const errorText = await response.text();
