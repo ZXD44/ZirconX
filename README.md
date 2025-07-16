@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+<h1 align="center">Hi, I'm ZirconX 👋</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  🌟 Frontend Dev | 🔧 Plugin Maker | 🎮 Gamer
+</p>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🚀 About Me
 
-## Expanding the ESLint configuration
+- 🎯 ชอบสร้างโปรเจคแนวทดลองและแปลกใหม่
+- 🧠 รู้จักหลายภาษา: JS, HTML, CSS, Lua, Python
+- 💬 สนใจงานด้าน UX/UI, Discord bot, Minecraft plugin
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 🛠 Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)
+![Lua](https://img.shields.io/badge/Lua-000080?logo=lua&logoColor=fff)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 📈 GitHub Stats
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=zirconx&show_icons=true&theme=tokyonight" />
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=zirconx&theme=tokyonight" />
+</p>
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+### 📫 Contact
+- 🌐 [Website](https://yourwebsite.com)
+- 💬 Discord: `ZirconX#1234`
